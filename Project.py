@@ -7,18 +7,19 @@ import Buffer
 
 def RunSatellite():
 
-    buffer = Buffer.Buffer(5)
+    # Add the FOR loops first
+
+    buffer = Buffer.Buffer(10)
     buff = buffer.getBuffer()
 
-    satellie = Satellite.Satellite(buff)
-    satellie.add()
-    satellie.add()
-
-    print( len(buff) )
-
-    receiver = Receiver.Receiver(buff)
+    satellie = Satellite.Satellite(buff, 10)
+    satellie.start()
 
     satellie.join()
+
+    receiver = Receiver.Receiver(buff, 10)
+    receiver.start()
+
     receiver.join()
 
 RunSatellite()
